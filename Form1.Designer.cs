@@ -32,9 +32,12 @@
             this.KioskList = new System.Windows.Forms.GroupBox();
             this.Kiosk35618_Btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.TabletBox = new System.Windows.Forms.GroupBox();
+            this.Battery_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).BeginInit();
             this.KioskList.SuspendLayout();
+            this.TabletBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MCC_Title
@@ -103,7 +106,7 @@
             this.KioskList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.KioskList.Controls.Add(this.Kiosk35618_Btn);
             this.KioskList.Font = new System.Drawing.Font("Target Alt Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KioskList.Location = new System.Drawing.Point(252, 236);
+            this.KioskList.Location = new System.Drawing.Point(30, 313);
             this.KioskList.Name = "KioskList";
             this.KioskList.Size = new System.Drawing.Size(338, 93);
             this.KioskList.TabIndex = 6;
@@ -133,11 +136,35 @@
             this.label2.Text = "created by galacticlemonade";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // TabletBox
+            // 
+            this.TabletBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TabletBox.Controls.Add(this.Battery_Btn);
+            this.TabletBox.Font = new System.Drawing.Font("Target Alt Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TabletBox.Location = new System.Drawing.Point(431, 313);
+            this.TabletBox.Name = "TabletBox";
+            this.TabletBox.Size = new System.Drawing.Size(338, 93);
+            this.TabletBox.TabIndex = 7;
+            this.TabletBox.TabStop = false;
+            this.TabletBox.Text = "Tablet";
+            // 
+            // Battery_Btn
+            // 
+            this.Battery_Btn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Battery_Btn.Location = new System.Drawing.Point(6, 31);
+            this.Battery_Btn.Name = "Battery_Btn";
+            this.Battery_Btn.Size = new System.Drawing.Size(326, 55);
+            this.Battery_Btn.TabIndex = 1;
+            this.Battery_Btn.Text = "Battery";
+            this.Battery_Btn.UseVisualStyleBackColor = true;
+            this.Battery_Btn.Click += new System.EventHandler(this.Battery_Btn_Click);
+            // 
             // RedboxMobileCommandCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 607);
+            this.Controls.Add(this.TabletBox);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.KioskList);
             this.Controls.Add(this.label1);
@@ -152,6 +179,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).EndInit();
             this.KioskList.ResumeLayout(false);
+            this.TabletBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -167,6 +195,8 @@
         private System.Windows.Forms.GroupBox KioskList;
         private System.Windows.Forms.Button Kiosk35618_Btn;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.GroupBox TabletBox;
+        private System.Windows.Forms.Button Battery_Btn;
     }
 }
 

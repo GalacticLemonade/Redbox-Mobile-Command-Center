@@ -43,5 +43,9 @@ namespace Redbox_Mobile_Command_Center {
             // all kiosks from a server
             // instead of hard-coding
         }
+
+        private void Battery_Btn_Click(object sender, EventArgs e) {
+
+        }
     }
 }
