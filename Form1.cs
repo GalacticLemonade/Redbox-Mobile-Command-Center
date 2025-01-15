@@ -38,7 +38,10 @@ namespace Redbox_Mobile_Command_Center {
         }
 
         private void Kiosk35618_Btn_Click(object sender, EventArgs e) {
-
+            // TODO:
+            // make sure you dynamically load
+            // all kiosks from a server
+            // instead of hard-coding
         }
     }
 }
