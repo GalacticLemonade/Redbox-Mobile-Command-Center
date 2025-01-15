@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace Redbox_Mobile_Command_Center {
+    public partial class RedboxMobileCommandCenter : Form {
+        public RedboxMobileCommandCenter() {
+            InitializeComponent();
+
+            // initialize blanks
+            IP_Text.Text = "Connecting...";
+
+            // setup window
+            //this.FormBorderStyle = FormBorderStyle.None;  // removes the border
+            this.WindowState = FormWindowState.Maximized;  // maximizes the window
+            this.TopMost = true;  // makes the form always on top
+
+            // get local ip
+            string host = Dns.GetHostName();
+            IPHostEntry ip = Dns.GetHostEntry(host);
+            var ipv4Address = ip.AddressList.FirstOrDefault(a => a.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+
+            if (ipv4Address != null) {
+                Console.WriteLine(ipv4Address.ToString());
+                IP_Text.Text = ipv4Address.ToString();
+
+            }
+            else {
+                Console.WriteLine("No IPv4 address found.");
+            }
+        }
+
+        private void Kiosk35618_Btn_Click(object sender, EventArgs e) {
+
+        }
+    }
+}
