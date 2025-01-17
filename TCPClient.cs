@@ -23,7 +23,7 @@ namespace Redbox_Mobile_Command_Center {
 
             byte[] data = Encoding.UTF8.GetBytes(message);
             await _stream.WriteAsync(data, 0, data.Length);
-            Console.WriteLine($"Sent: {message}");
+            //Console.WriteLine($"Sent: {message}");
         }
 
         public async Task<string> ReceiveMessageAsync() {
@@ -35,7 +35,7 @@ namespace Redbox_Mobile_Command_Center {
 
             if (bytesRead > 0) {
                 string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                Console.WriteLine($"Received: {message}");
+                //Console.WriteLine($"Received: {message}");
                 return message;
             }
 
