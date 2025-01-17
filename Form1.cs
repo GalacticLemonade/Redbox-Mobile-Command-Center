@@ -66,6 +66,17 @@ namespace Redbox_Mobile_Command_Center {
             kioskListTimer.Start();
         }
 
+        private async void GenericKioskButton(string KioskID) {
+            await client.SendMessageAsync("switch-to-kiosk " + KioskID);
+
+            string response = await client.ReceiveMessageAsync();
+            if (response != "200") {
+                Console.WriteLine("Error!");
+            } else {
+                Console.WriteLine("Switched to kiosk " + KioskID);
+            }
+        }
+
         private void RunDOSCommand(string command) {
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
@@ -136,7 +147,7 @@ namespace Redbox_Mobile_Command_Center {
 
         private void AddKiosk(string KioskID) {
             Button button = CreateKioskButton(TabletBox, KioskList, KioskID, () => {
-                Console.WriteLine(KioskID);
+                GenericKioskButton(KioskID);
             });
 
             kioskButtons.Add(button);
