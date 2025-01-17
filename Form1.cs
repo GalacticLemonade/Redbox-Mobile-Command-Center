@@ -66,6 +66,16 @@ namespace Redbox_Mobile_Command_Center {
             kioskListTimer.Start();
         }
 
+        private void RunDOSCommand(string command) {
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C " + command;
+            process.StartInfo = startInfo;
+            process.Start();
+        }
+
         private async void KioskListTimer_Tick(object sender, EventArgs e) {
             //remove all kiosk buttons
             foreach (Button btn in kioskButtons) {
@@ -207,6 +217,10 @@ namespace Redbox_Mobile_Command_Center {
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+
+        private void RegeditBtn_Click(object sender, EventArgs e) {
+            System.Diagnostics.Process.Start("Regedit.exe");
+        }
     }
 
     public class KioskRow {

@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedboxMobileCommandCenter));
             this.MainMenuPanel = new System.Windows.Forms.Panel();
+            this.RegeditBtn = new System.Windows.Forms.Button();
             this.KioskList = new System.Windows.Forms.GroupBox();
             this.TabletBox = new System.Windows.Forms.GroupBox();
             this.Battery_Btn = new System.Windows.Forms.Button();
@@ -58,6 +59,17 @@
             this.MainMenuPanel.Size = new System.Drawing.Size(800, 607);
             this.MainMenuPanel.TabIndex = 4;
             // 
+            // RegeditBtn
+            // 
+            this.RegeditBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RegeditBtn.Location = new System.Drawing.Point(6, 92);
+            this.RegeditBtn.Name = "RegeditBtn";
+            this.RegeditBtn.Size = new System.Drawing.Size(326, 55);
+            this.RegeditBtn.TabIndex = 2;
+            this.RegeditBtn.Text = "Regedit";
+            this.RegeditBtn.UseVisualStyleBackColor = true;
+            this.RegeditBtn.Click += new System.EventHandler(this.RegeditBtn_Click);
+            // 
             // KioskList
             // 
             this.KioskList.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -72,11 +84,12 @@
             // TabletBox
             // 
             this.TabletBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.TabletBox.Controls.Add(this.RegeditBtn);
             this.TabletBox.Controls.Add(this.Battery_Btn);
             this.TabletBox.Font = new System.Drawing.Font("Target Alt Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TabletBox.Location = new System.Drawing.Point(446, 308);
             this.TabletBox.Name = "TabletBox";
-            this.TabletBox.Size = new System.Drawing.Size(338, 93);
+            this.TabletBox.Size = new System.Drawing.Size(338, 154);
             this.TabletBox.TabIndex = 15;
             this.TabletBox.TabStop = false;
             this.TabletBox.Text = "Tablet";
@@ -195,6 +208,7 @@
         private System.Windows.Forms.Label MCC_Title;
         private System.Windows.Forms.GroupBox TabletBox;
         private System.Windows.Forms.Button Battery_Btn;
+        private System.Windows.Forms.Button RegeditBtn;
     }
 }
 
