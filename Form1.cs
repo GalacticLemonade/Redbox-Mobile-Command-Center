@@ -113,8 +113,6 @@ namespace Redbox_Mobile_Command_Center {
             foreach (KioskRow kiosk in kiosksTable) {
                 CreateKioskButton(KioskList, kiosk.KioskID.ToString(), () => { });
             }
-
-            client.Disconnect();
         }
 
         private void Battery_Btn_Click(object sender, EventArgs e) {
