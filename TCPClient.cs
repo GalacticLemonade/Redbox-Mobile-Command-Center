@@ -26,7 +26,7 @@ namespace Redbox_Mobile_Command_Center {
             Console.WriteLine($"Sent: {message}");
         }
 
-        public async Task ReceiveMessageAsync() {
+        public async Task<string> ReceiveMessageAsync() {
             if (_stream == null)
                 throw new InvalidOperationException("Not connected to a server.");
 
@@ -36,7 +36,10 @@ namespace Redbox_Mobile_Command_Center {
             if (bytesRead > 0) {
                 string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
                 Console.WriteLine($"Received: {message}");
+                return message;
             }
+
+            return string.Empty; // Return an empty string if no data is received.
         }
 
         public void Disconnect() {
