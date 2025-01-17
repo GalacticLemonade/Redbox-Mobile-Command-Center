@@ -53,7 +53,7 @@ namespace Redbox_Mobile_Command_Center {
             client = new TCPClient();
             await client.ConnectAsync("216.169.82.236", 11500);
 
-            await client.SendMessageAsync("get-all-kiosks");
+            await client.SendMessageAsync("get-all-kiosks 0");
 
             string response = await client.ReceiveMessageAsync();
             Console.WriteLine($"Server replied: {response}");
