@@ -17,6 +17,7 @@ namespace Redbox_Mobile_Command_Center {
 
         static TCPClient client;
         static int NumKiosks = 0;
+        static Timer kioskListTimer;
 
         public RedboxMobileCommandCenter() {
             InitializeComponent();
@@ -54,7 +55,23 @@ namespace Redbox_Mobile_Command_Center {
             }
 
             // initialize buttons
+            kioskListTimer = new Timer {
+                Interval = 5000
+            };
 
+            kioskListTimer.Tick += KioskListTimer_Tick;
+            kioskListTimer.Start();
+        }
+
+        private void KioskListTimer_Tick(object sender, EventArgs e) {
+            //remove all kiosk buttons
+            //add all new kiosk buttons
+        }
+
+        private void AddKiosk(string KioskID) {
+            Button button = CreateKioskButton(TabletBox, KioskList, KioskID, () => {
+                Console.WriteLine(KioskID);
+            });
         }
 
         private static Button CreateKioskButton(GroupBox tabletBox, GroupBox groupBox, string KioskID, Action clicked) {
@@ -119,7 +136,7 @@ namespace Redbox_Mobile_Command_Center {
             List<KioskRow> kiosksTable = JsonConvert.DeserializeObject<List<KioskRow>>(response);
 
             foreach (KioskRow kiosk in kiosksTable) {
-                CreateKioskButton(TabletBox, KioskList, kiosk.KioskID.ToString(), () => { });
+                AddKiosk(kiosk.KioskID.ToString());
             }
         }
 
