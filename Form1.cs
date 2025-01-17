@@ -18,6 +18,9 @@ namespace Redbox_Mobile_Command_Center {
         static TCPClient client;
         static int NumKiosks = 0;
         static Timer kioskListTimer;
+        private List<Button> kioskButtons = new List<Button>();
+        int activeKiosk = 0;
+        Random random;
 
         public RedboxMobileCommandCenter() {
             InitializeComponent();
@@ -63,15 +66,70 @@ namespace Redbox_Mobile_Command_Center {
             kioskListTimer.Start();
         }
 
-        private void KioskListTimer_Tick(object sender, EventArgs e) {
+        private async void KioskListTimer_Tick(object sender, EventArgs e) {
             //remove all kiosk buttons
-            //add all new kiosk buttons
+            foreach (Button btn in kioskButtons) {
+                //btn.Visible = false;
+                //btn.Enabled = false;
+                btn.Name = "UNACTIVE_" + DateTime.Now + "_" + random.Next(0, 10000000);
+
+                //please delete them
+                foreach (Control control in this.Controls) {
+                    if (control.Name == btn.Name) {
+                        this.Controls.Remove(control);
+                        break;
+                    }
+                }
+
+                NumKiosks -= 1;
+
+                ShrinkBoxByOne(TabletBox, KioskList, btn);
+            }
+
+            kioskButtons.RemoveRange(0, kioskButtons.Count);
+
+            //add all kiosks
+            await client.SendMessageAsync("get-all-kiosks");
+
+            string response = await client.ReceiveMessageAsync();
+            Console.WriteLine($"Server replied: {response}");
+
+            List<KioskRow> kiosksTable = JsonConvert.DeserializeObject<List<KioskRow>>(response);
+
+            foreach (KioskRow kiosk in kiosksTable) {
+                AddKiosk(kiosk.KioskID.ToString());
+            }
+        }
+
+        private void ShrinkBoxByOne(GroupBox tabletBox, GroupBox groupBox, Button newButton) {
+            int padding = 10;
+
+            //calculate the center position before resizing
+            Point originalCenter = new Point(
+                groupBox.Location.X + groupBox.Width / 2,
+                groupBox.Location.Y + groupBox.Height / 2
+            );
+
+            //adjust group box height and recenter it (removing height instead of adding)
+            int previousHeight = groupBox.Height;
+            groupBox.Height -= newButton.Size.Height + padding;
+
+            //calculate the new location to keep it centered
+            groupBox.Location = new Point(
+                originalCenter.X - groupBox.Width / 2,
+                originalCenter.Y - groupBox.Height / 2
+            );
+
+            //re-center tablet box so it looks better
+            tabletBox.Location = new Point(tabletBox.Location.X, groupBox.Location.Y);
         }
 
         private void AddKiosk(string KioskID) {
             Button button = CreateKioskButton(TabletBox, KioskList, KioskID, () => {
                 Console.WriteLine(KioskID);
             });
+
+            kioskButtons.Add(button);
         }
 
         private static Button CreateKioskButton(GroupBox tabletBox, GroupBox groupBox, string KioskID, Action clicked) {
@@ -125,6 +183,8 @@ namespace Redbox_Mobile_Command_Center {
 
 
         private async void InitializeVariables() {
+            random = new Random();
+
             client = new TCPClient();
             await client.ConnectAsync("216.169.82.236", 11500);
 
