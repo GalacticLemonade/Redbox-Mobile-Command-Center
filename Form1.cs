@@ -23,8 +23,13 @@ namespace Redbox_Mobile_Command_Center {
 
             AllocConsole();
 
-            // initialize variables
-            InitializeVariables();
+            try {
+                // initialize variables
+                InitializeVariables();
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+                MessageBox.Show(ex.Message);
+            }
 
             // initialize blanks
             IP_Text.Text = "Connecting...";
@@ -52,7 +57,7 @@ namespace Redbox_Mobile_Command_Center {
 
         }
 
-        private static Button CreateKioskButton(GroupBox groupBox, string KioskID, Action clicked) {
+        private static Button CreateKioskButton(GroupBox tabletBox, GroupBox groupBox, string KioskID, Action clicked) {
             int padding = 10;
 
             //check if the button already exists
@@ -93,6 +98,9 @@ namespace Redbox_Mobile_Command_Center {
                 originalCenter.Y - groupBox.Height / 2
             );
 
+            //re-center tablet box so it looks better
+            tabletBox.Location = new Point(tabletBox.Location.X, groupBox.Location.Y);
+
             NumKiosks += 1;
 
             return newButton;
@@ -111,7 +119,7 @@ namespace Redbox_Mobile_Command_Center {
             List<KioskRow> kiosksTable = JsonConvert.DeserializeObject<List<KioskRow>>(response);
 
             foreach (KioskRow kiosk in kiosksTable) {
-                CreateKioskButton(KioskList, kiosk.KioskID.ToString(), () => { });
+                CreateKioskButton(TabletBox, KioskList, kiosk.KioskID.ToString(), () => { });
             }
         }
 
