@@ -11,6 +11,10 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 
 namespace Redbox_Mobile_Command_Center {
+    public class KioskRow {
+        public int KioskID { get; set; }
+    }
+
     public partial class RedboxMobileCommandCenter : Form {
 
         static TCPClient client;
@@ -23,8 +27,6 @@ namespace Redbox_Mobile_Command_Center {
 
             // initialize variables
             InitializeVariables();
-
-            hi();
 
             // initialize blanks
             IP_Text.Text = "Connecting...";
@@ -52,22 +54,23 @@ namespace Redbox_Mobile_Command_Center {
 
         }
 
-        private void hi() {
-            Button newBtn = CreateKioskButton(KioskList, "35618", () => { Console.WriteLine("35618 clicked"); });
-            Button newBt2n = CreateKioskButton(KioskList, "35318", () => { Console.WriteLine("35318 clicked"); });
-        }
-
         private static Button CreateKioskButton(GroupBox groupBox, string KioskID, Action clicked) {
             int padding = 10;
 
             //check if the button already exists
-            Button existingButton = groupBox.Controls.OfType<Button>()
+            var existingButton = groupBox.Controls.OfType<Button>()
                 .FirstOrDefault(b => b.Name == KioskID + "_Btn");
 
             if (existingButton != null) {
                 MessageBox.Show($"Button for {KioskID} already exists!");
                 return existingButton;
             }
+
+            //calculate the center position before resizing
+            Point originalCenter = new Point(
+                groupBox.Location.X + groupBox.Width / 2,
+                groupBox.Location.Y + groupBox.Height / 2
+            );
 
             Button newButton = new Button();
 
@@ -81,28 +84,33 @@ namespace Redbox_Mobile_Command_Center {
             newButton.Click += (Object sender, EventArgs e) => clicked?.Invoke();
 
             groupBox.Controls.Add(newButton);
-            groupBox.Height = groupBox.Height + newButton.Size.Height + padding;
+
+            //adjust GroupBox height and recenter it
+            int previousHeight = groupBox.Height;
+            groupBox.Height += newButton.Size.Height + padding;
+
+            //calculate the new location to keep it centered
+            groupBox.Location = new Point(
+                originalCenter.X - groupBox.Width / 2,
+                originalCenter.Y - groupBox.Height / 2
+            );
 
             NumKiosks += 1;
 
             return newButton;
         }
 
+
         private static async void InitializeVariables() {
             client = new TCPClient();
             await client.ConnectAsync("216.169.82.236", 11500);
+
+            await client.SendMessageAsync("get-all-kiosks");
 
             string response = await client.ReceiveMessageAsync();
             Console.WriteLine($"Server replied: {response}");
 
             client.Disconnect();
-        }
-
-        private void Kiosk35618_Btn_Click(object sender, EventArgs e) {
-            // TODO:
-            // make sure you dynamically load
-            // all kiosks from a server
-            // instead of hard-coding
         }
 
         private void Battery_Btn_Click(object sender, EventArgs e) {
