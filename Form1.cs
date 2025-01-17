@@ -14,6 +14,7 @@ namespace Redbox_Mobile_Command_Center {
     public partial class RedboxMobileCommandCenter : Form {
 
         static TCPClient client;
+        static int NumKiosks = 0;
 
         public RedboxMobileCommandCenter() {
             InitializeComponent();
@@ -22,6 +23,8 @@ namespace Redbox_Mobile_Command_Center {
 
             // initialize variables
             InitializeVariables();
+
+            hi();
 
             // initialize blanks
             IP_Text.Text = "Connecting...";
@@ -34,7 +37,7 @@ namespace Redbox_Mobile_Command_Center {
             // get local ip
             string host = Dns.GetHostName();
             IPHostEntry ip = Dns.GetHostEntry(host);
-            var ipv4Address = ip.AddressList.FirstOrDefault(a => a.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+            IPAddress ipv4Address = ip.AddressList.FirstOrDefault(a => a.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
 
             if (ipv4Address != null) {
                 Console.WriteLine(ipv4Address.ToString());
@@ -49,11 +52,45 @@ namespace Redbox_Mobile_Command_Center {
 
         }
 
+        private void hi() {
+            Button newBtn = CreateKioskButton(KioskList, "35618", () => { Console.WriteLine("35618 clicked"); });
+            Button newBt2n = CreateKioskButton(KioskList, "35318", () => { Console.WriteLine("35318 clicked"); });
+        }
+
+        private static Button CreateKioskButton(GroupBox groupBox, string KioskID, Action clicked) {
+            int padding = 10;
+
+            //check if the button already exists
+            Button existingButton = groupBox.Controls.OfType<Button>()
+                .FirstOrDefault(b => b.Name == KioskID + "_Btn");
+
+            if (existingButton != null) {
+                MessageBox.Show($"Button for {KioskID} already exists!");
+                return existingButton;
+            }
+
+            Button newButton = new Button();
+
+            //set properties
+            newButton.Text = "Kiosk " + KioskID;
+            newButton.Size = new Size(326, 55);
+            newButton.Location = new Point(6, 31 + ((55 + padding) * NumKiosks));
+            newButton.Font = new Font("Target Alt Regular", 15.75f);
+            newButton.Name = KioskID + "_Btn";
+
+            newButton.Click += (Object sender, EventArgs e) => clicked?.Invoke();
+
+            groupBox.Controls.Add(newButton);
+            groupBox.Height = groupBox.Height + newButton.Size.Height + padding;
+
+            NumKiosks += 1;
+
+            return newButton;
+        }
+
         private static async void InitializeVariables() {
             client = new TCPClient();
             await client.ConnectAsync("216.169.82.236", 11500);
-
-            await client.SendMessageAsync("get-all-kiosks 0");
 
             string response = await client.ReceiveMessageAsync();
             Console.WriteLine($"Server replied: {response}");

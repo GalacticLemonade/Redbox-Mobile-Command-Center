@@ -30,13 +30,11 @@
             this.IP_Text = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.KioskList = new System.Windows.Forms.GroupBox();
-            this.Kiosk35618_Btn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.TabletBox = new System.Windows.Forms.GroupBox();
             this.Battery_Btn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).BeginInit();
-            this.KioskList.SuspendLayout();
             this.TabletBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,25 +102,13 @@
             // KioskList
             // 
             this.KioskList.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.KioskList.Controls.Add(this.Kiosk35618_Btn);
             this.KioskList.Font = new System.Drawing.Font("Target Alt Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.KioskList.Location = new System.Drawing.Point(30, 313);
             this.KioskList.Name = "KioskList";
-            this.KioskList.Size = new System.Drawing.Size(338, 93);
+            this.KioskList.Size = new System.Drawing.Size(338, 28);
             this.KioskList.TabIndex = 6;
             this.KioskList.TabStop = false;
             this.KioskList.Text = "Kiosks";
-            // 
-            // Kiosk35618_Btn
-            // 
-            this.Kiosk35618_Btn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Kiosk35618_Btn.Location = new System.Drawing.Point(6, 31);
-            this.Kiosk35618_Btn.Name = "Kiosk35618_Btn";
-            this.Kiosk35618_Btn.Size = new System.Drawing.Size(326, 55);
-            this.Kiosk35618_Btn.TabIndex = 0;
-            this.Kiosk35618_Btn.Text = "Kiosk 35618";
-            this.Kiosk35618_Btn.UseVisualStyleBackColor = true;
-            this.Kiosk35618_Btn.Click += new System.EventHandler(this.Kiosk35618_Btn_Click);
             // 
             // label2
             // 
@@ -178,7 +164,6 @@
             this.Text = "Redbox Mobile Command Center";
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).EndInit();
-            this.KioskList.ResumeLayout(false);
             this.TabletBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -193,7 +178,6 @@
         private System.Windows.Forms.Label IP_Text;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox KioskList;
-        private System.Windows.Forms.Button Kiosk35618_Btn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox TabletBox;
         private System.Windows.Forms.Button Battery_Btn;
