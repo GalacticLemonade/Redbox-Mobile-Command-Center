@@ -19,7 +19,7 @@ namespace Redbox_Mobile_Command_Center {
 
         public async Task SendMessageAsync(string message) {
 
-            message = message;
+            message = EncryptionHelper.Encrypt(message);
 
             if (_stream == null)
                 throw new InvalidOperationException("Not connected to a server.");
@@ -38,6 +38,9 @@ namespace Redbox_Mobile_Command_Center {
 
             if (bytesRead > 0) {
                 string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+
+                message = EncryptionHelper.Decrypt(message);
+
                 //Console.WriteLine($"Received: {message}");
                 return message;
             }
