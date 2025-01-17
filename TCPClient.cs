@@ -18,6 +18,9 @@ namespace Redbox_Mobile_Command_Center {
         }
 
         public async Task SendMessageAsync(string message) {
+
+            message = message;
+
             if (_stream == null)
                 throw new InvalidOperationException("Not connected to a server.");
 
