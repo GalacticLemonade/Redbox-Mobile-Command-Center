@@ -9,11 +9,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json;
 
 namespace Redbox_Mobile_Command_Center {
-    public class KioskRow {
-        public int KioskID { get; set; }
-    }
 
     public partial class RedboxMobileCommandCenter : Form {
 
@@ -101,7 +99,7 @@ namespace Redbox_Mobile_Command_Center {
         }
 
 
-        private static async void InitializeVariables() {
+        private async void InitializeVariables() {
             client = new TCPClient();
             await client.ConnectAsync("216.169.82.236", 11500);
 
@@ -109,6 +107,12 @@ namespace Redbox_Mobile_Command_Center {
 
             string response = await client.ReceiveMessageAsync();
             Console.WriteLine($"Server replied: {response}");
+
+            List<KioskRow> kiosksTable = JsonConvert.DeserializeObject<List<KioskRow>>(response);
+
+            foreach (KioskRow kiosk in kiosksTable) {
+                CreateKioskButton(KioskList, kiosk.KioskID.ToString(), () => { });
+            }
 
             client.Disconnect();
         }
@@ -120,5 +124,9 @@ namespace Redbox_Mobile_Command_Center {
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+    }
+
+    public class KioskRow {
+        public int KioskID { get; set; }
     }
 }
