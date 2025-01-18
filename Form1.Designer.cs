@@ -25,9 +25,9 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RedboxMobileCommandCenter));
             this.MainMenuPanel = new System.Windows.Forms.Panel();
-            this.RegeditBtn = new System.Windows.Forms.Button();
             this.KioskList = new System.Windows.Forms.GroupBox();
             this.TabletBox = new System.Windows.Forms.GroupBox();
+            this.RegeditBtn = new System.Windows.Forms.Button();
             this.Battery_Btn = new System.Windows.Forms.Button();
             this.RaspberryPI_Logo = new System.Windows.Forms.PictureBox();
             this.VersionText = new System.Windows.Forms.Label();
@@ -35,10 +35,14 @@
             this.Redbox_Logo = new System.Windows.Forms.PictureBox();
             this.MCC_Title = new System.Windows.Forms.Label();
             this.CreditText = new System.Windows.Forms.Label();
+            this.GenericKioskPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.MainMenuPanel.SuspendLayout();
             this.TabletBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).BeginInit();
+            this.GenericKioskPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuPanel
@@ -58,17 +62,6 @@
             this.MainMenuPanel.Name = "MainMenuPanel";
             this.MainMenuPanel.Size = new System.Drawing.Size(800, 607);
             this.MainMenuPanel.TabIndex = 4;
-            // 
-            // RegeditBtn
-            // 
-            this.RegeditBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.RegeditBtn.Location = new System.Drawing.Point(6, 92);
-            this.RegeditBtn.Name = "RegeditBtn";
-            this.RegeditBtn.Size = new System.Drawing.Size(326, 55);
-            this.RegeditBtn.TabIndex = 2;
-            this.RegeditBtn.Text = "Regedit";
-            this.RegeditBtn.UseVisualStyleBackColor = true;
-            this.RegeditBtn.Click += new System.EventHandler(this.RegeditBtn_Click);
             // 
             // KioskList
             // 
@@ -93,6 +86,17 @@
             this.TabletBox.TabIndex = 15;
             this.TabletBox.TabStop = false;
             this.TabletBox.Text = "Tablet";
+            // 
+            // RegeditBtn
+            // 
+            this.RegeditBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.RegeditBtn.Location = new System.Drawing.Point(6, 92);
+            this.RegeditBtn.Name = "RegeditBtn";
+            this.RegeditBtn.Size = new System.Drawing.Size(326, 55);
+            this.RegeditBtn.TabIndex = 2;
+            this.RegeditBtn.Text = "Regedit";
+            this.RegeditBtn.UseVisualStyleBackColor = true;
+            this.RegeditBtn.Click += new System.EventHandler(this.RegeditBtn_Click);
             // 
             // Battery_Btn
             // 
@@ -177,11 +181,50 @@
             this.CreditText.Text = "created by galacticlemonade";
             this.CreditText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // GenericKioskPanel
+            // 
+            this.GenericKioskPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.GenericKioskPanel.Controls.Add(this.button1);
+            this.GenericKioskPanel.Controls.Add(this.label1);
+            this.GenericKioskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GenericKioskPanel.Enabled = false;
+            this.GenericKioskPanel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.GenericKioskPanel.Location = new System.Drawing.Point(0, 0);
+            this.GenericKioskPanel.Name = "GenericKioskPanel";
+            this.GenericKioskPanel.Size = new System.Drawing.Size(800, 607);
+            this.GenericKioskPanel.TabIndex = 16;
+            this.GenericKioskPanel.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.Font = new System.Drawing.Font("Target Alt Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(222, 468);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(343, 89);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Back";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Target Alt Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.label1.Location = new System.Drawing.Point(273, 574);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(255, 24);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "created by galacticlemonade";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // RedboxMobileCommandCenter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 607);
+            this.Controls.Add(this.GenericKioskPanel);
             this.Controls.Add(this.MainMenuPanel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -192,6 +235,8 @@
             this.TabletBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).EndInit();
+            this.GenericKioskPanel.ResumeLayout(false);
+            this.GenericKioskPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -209,6 +254,9 @@
         private System.Windows.Forms.GroupBox TabletBox;
         private System.Windows.Forms.Button Battery_Btn;
         private System.Windows.Forms.Button RegeditBtn;
+        private System.Windows.Forms.Panel GenericKioskPanel;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

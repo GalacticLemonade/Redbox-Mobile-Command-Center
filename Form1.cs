@@ -25,7 +25,7 @@ namespace Redbox_Mobile_Command_Center {
         public RedboxMobileCommandCenter() {
             InitializeComponent();
 
-            AllocConsole();
+            //AllocConsole();
 
             try {
                 // initialize variables
@@ -74,6 +74,8 @@ namespace Redbox_Mobile_Command_Center {
                 Console.WriteLine("Error!");
             } else {
                 Console.WriteLine("Switched to kiosk " + KioskID);
+
+                await client.SendMessageAsync("execute-kiosk-command hal-startup");
             }
         }
 
@@ -88,37 +90,41 @@ namespace Redbox_Mobile_Command_Center {
         }
 
         private async void KioskListTimer_Tick(object sender, EventArgs e) {
-            //remove all kiosk buttons
-            foreach (Button btn in kioskButtons) {
-                //btn.Visible = false;
-                //btn.Enabled = false;
-                btn.Name = "UNACTIVE_" + DateTime.Now + "_" + random.Next(0, 10000000);
+            try {
+                //remove all kiosk buttons
+                foreach (Button btn in kioskButtons) {
+                    //btn.Visible = false;
+                    //btn.Enabled = false;
+                    btn.Name = "UNACTIVE_" + DateTime.Now + "_" + random.Next(0, 10000000);
 
-                //please delete them
-                foreach (Control control in this.Controls) {
-                    if (control.Name == btn.Name) {
-                        this.Controls.Remove(control);
-                        break;
+                    //please delete them
+                    foreach (Control control in this.Controls) {
+                        if (control.Name == btn.Name) {
+                            this.Controls.Remove(control);
+                            break;
+                        }
                     }
+
+                    NumKiosks -= 1;
+
+                    ShrinkBoxByOne(TabletBox, KioskList, btn);
                 }
 
-                NumKiosks -= 1;
+                kioskButtons.RemoveRange(0, kioskButtons.Count);
 
-                ShrinkBoxByOne(TabletBox, KioskList, btn);
-            }
+                //add all kiosks
+                await client.SendMessageAsync("get-all-kiosks");
 
-            kioskButtons.RemoveRange(0, kioskButtons.Count);
+                string response = await client.ReceiveMessageAsync();
+                Console.WriteLine($"Server replied: {response}");
 
-            //add all kiosks
-            await client.SendMessageAsync("get-all-kiosks");
+                List<KioskRow> kiosksTable = JsonConvert.DeserializeObject<List<KioskRow>>(response);
 
-            string response = await client.ReceiveMessageAsync();
-            Console.WriteLine($"Server replied: {response}");
-
-            List<KioskRow> kiosksTable = JsonConvert.DeserializeObject<List<KioskRow>>(response);
-
-            foreach (KioskRow kiosk in kiosksTable) {
-                AddKiosk(kiosk.KioskID.ToString());
+                foreach (KioskRow kiosk in kiosksTable) {
+                    AddKiosk(kiosk.KioskID.ToString());
+                }
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -225,9 +231,11 @@ namespace Redbox_Mobile_Command_Center {
             Console.WriteLine("Hi!");
         }
 
+        /*
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
+        */
 
         private void RegeditBtn_Click(object sender, EventArgs e) {
             System.Diagnostics.Process.Start("Regedit.exe");
