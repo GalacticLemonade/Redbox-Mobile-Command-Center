@@ -55,18 +55,36 @@ namespace Redbox_Mobile_Command_Center {
             }
             else {
                 Console.WriteLine("No IPv4 address found.");
+                return;
             }
 
             // initialize buttons
+            /*
             kioskListTimer = new Timer {
                 Interval = 5000
             };
 
             kioskListTimer.Tick += KioskListTimer_Tick;
             kioskListTimer.Start();
+            */
+        }
+
+        private void SwitchToKioskPanel(string KioskID) {
+            GenericKioskPanel.Visible = true;
+            GenericKioskPanel.Enabled = true;
+
+            MainMenuPanel.Visible = false;
+
+            GKPTitle.Text = "Kiosk " + KioskID;
         }
 
         private async void GenericKioskButton(string KioskID) {
+
+            if (activeKiosk == Int32.Parse(KioskID)) {
+                SwitchToKioskPanel(KioskID);
+                return;
+            }
+
             await client.SendMessageAsync("switch-to-kiosk " + KioskID);
 
             string response = await client.ReceiveMessageAsync();
@@ -74,8 +92,10 @@ namespace Redbox_Mobile_Command_Center {
                 Console.WriteLine("Error!");
             } else {
                 Console.WriteLine("Switched to kiosk " + KioskID);
+                activeKiosk = Int32.Parse(KioskID);
 
-                await client.SendMessageAsync("execute-kiosk-command hal-startup");
+                SwitchToKioskPanel(KioskID);
+                //await client.SendMessageAsync("execute-kiosk-command move-to-slot 52 8");
             }
         }
 
@@ -89,6 +109,7 @@ namespace Redbox_Mobile_Command_Center {
             process.Start();
         }
 
+        /*
         private async void KioskListTimer_Tick(object sender, EventArgs e) {
             try {
                 //remove all kiosk buttons
@@ -127,6 +148,7 @@ namespace Redbox_Mobile_Command_Center {
                 Console.WriteLine(ex.Message);
             }
         }
+        */
 
         private void ShrinkBoxByOne(GroupBox tabletBox, GroupBox groupBox, Button newButton) {
             int padding = 10;
@@ -239,6 +261,13 @@ namespace Redbox_Mobile_Command_Center {
 
         private void RegeditBtn_Click(object sender, EventArgs e) {
             System.Diagnostics.Process.Start("Regedit.exe");
+        }
+
+        private void button1_Click(object sender, EventArgs e) {
+            GenericKioskPanel.Visible = false;
+            MainMenuPanel.Visible = true;
+
+            client.SendMessageAsync("select-no-kiosk");
         }
     }
 

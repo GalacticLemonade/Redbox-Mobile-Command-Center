@@ -36,7 +36,8 @@
             this.MCC_Title = new System.Windows.Forms.Label();
             this.CreditText = new System.Windows.Forms.Label();
             this.GenericKioskPanel = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.GKPTitle = new System.Windows.Forms.Label();
+            this.GenericKioskPageBack_Btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.MainMenuPanel.SuspendLayout();
             this.TabletBox.SuspendLayout();
@@ -184,7 +185,8 @@
             // GenericKioskPanel
             // 
             this.GenericKioskPanel.BackColor = System.Drawing.SystemColors.Window;
-            this.GenericKioskPanel.Controls.Add(this.button1);
+            this.GenericKioskPanel.Controls.Add(this.GKPTitle);
+            this.GenericKioskPanel.Controls.Add(this.GenericKioskPageBack_Btn);
             this.GenericKioskPanel.Controls.Add(this.label1);
             this.GenericKioskPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GenericKioskPanel.Enabled = false;
@@ -195,16 +197,30 @@
             this.GenericKioskPanel.TabIndex = 16;
             this.GenericKioskPanel.Visible = false;
             // 
-            // button1
+            // GKPTitle
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Font = new System.Drawing.Font("Target Alt Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(222, 468);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(343, 89);
-            this.button1.TabIndex = 16;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
+            this.GKPTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.GKPTitle.AutoSize = true;
+            this.GKPTitle.Font = new System.Drawing.Font("Target Alt Regular", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GKPTitle.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.GKPTitle.Location = new System.Drawing.Point(292, 9);
+            this.GKPTitle.Name = "GKPTitle";
+            this.GKPTitle.Size = new System.Drawing.Size(225, 39);
+            this.GKPTitle.TabIndex = 17;
+            this.GKPTitle.Text = "kiosk <kiosk id>";
+            this.GKPTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // GenericKioskPageBack_Btn
+            // 
+            this.GenericKioskPageBack_Btn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.GenericKioskPageBack_Btn.Font = new System.Drawing.Font("Target Alt Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.GenericKioskPageBack_Btn.Location = new System.Drawing.Point(222, 468);
+            this.GenericKioskPageBack_Btn.Name = "GenericKioskPageBack_Btn";
+            this.GenericKioskPageBack_Btn.Size = new System.Drawing.Size(343, 89);
+            this.GenericKioskPageBack_Btn.TabIndex = 16;
+            this.GenericKioskPageBack_Btn.Text = "Back";
+            this.GenericKioskPageBack_Btn.UseVisualStyleBackColor = true;
+            this.GenericKioskPageBack_Btn.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -256,7 +272,8 @@
         private System.Windows.Forms.Button RegeditBtn;
         private System.Windows.Forms.Panel GenericKioskPanel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button GenericKioskPageBack_Btn;
+        private System.Windows.Forms.Label GKPTitle;
     }
 }
 
