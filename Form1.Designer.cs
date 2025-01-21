@@ -36,6 +36,12 @@
             this.MCC_Title = new System.Windows.Forms.Label();
             this.CreditText = new System.Windows.Forms.Label();
             this.GenericKioskPanel = new System.Windows.Forms.Panel();
+            this.MovementsBox = new System.Windows.Forms.GroupBox();
+            this.GoToButton = new System.Windows.Forms.Button();
+            this.SlotTitleText = new System.Windows.Forms.Label();
+            this.SlotEntry = new System.Windows.Forms.TextBox();
+            this.DeckTextTitle = new System.Windows.Forms.Label();
+            this.DeckEntry = new System.Windows.Forms.TextBox();
             this.GKPTitle = new System.Windows.Forms.Label();
             this.GenericKioskPageBack_Btn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -44,6 +50,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.RaspberryPI_Logo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).BeginInit();
             this.GenericKioskPanel.SuspendLayout();
+            this.MovementsBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuPanel
@@ -61,14 +68,14 @@
             this.MainMenuPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainMenuPanel.Location = new System.Drawing.Point(0, 0);
             this.MainMenuPanel.Name = "MainMenuPanel";
-            this.MainMenuPanel.Size = new System.Drawing.Size(800, 607);
+            this.MainMenuPanel.Size = new System.Drawing.Size(1350, 729);
             this.MainMenuPanel.TabIndex = 4;
             // 
             // KioskList
             // 
             this.KioskList.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.KioskList.Font = new System.Drawing.Font("Target Alt Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.KioskList.Location = new System.Drawing.Point(45, 308);
+            this.KioskList.Location = new System.Drawing.Point(320, 369);
             this.KioskList.Name = "KioskList";
             this.KioskList.Size = new System.Drawing.Size(338, 28);
             this.KioskList.TabIndex = 13;
@@ -81,7 +88,7 @@
             this.TabletBox.Controls.Add(this.RegeditBtn);
             this.TabletBox.Controls.Add(this.Battery_Btn);
             this.TabletBox.Font = new System.Drawing.Font("Target Alt Regular", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TabletBox.Location = new System.Drawing.Point(446, 308);
+            this.TabletBox.Location = new System.Drawing.Point(721, 369);
             this.TabletBox.Name = "TabletBox";
             this.TabletBox.Size = new System.Drawing.Size(338, 154);
             this.TabletBox.TabIndex = 15;
@@ -115,7 +122,7 @@
             this.RaspberryPI_Logo.ImageLocation = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYdE5U9ZRW_2RVCCK5ifIHULPvR" +
     "6Z48FQWYg&s";
             this.RaspberryPI_Logo.InitialImage = global::Redbox_Mobile_Command_Center.Properties.Resources.RaspberryPI_Logo;
-            this.RaspberryPI_Logo.Location = new System.Drawing.Point(3, 554);
+            this.RaspberryPI_Logo.Location = new System.Drawing.Point(3, 676);
             this.RaspberryPI_Logo.Name = "RaspberryPI_Logo";
             this.RaspberryPI_Logo.Size = new System.Drawing.Size(40, 50);
             this.RaspberryPI_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -127,7 +134,7 @@
             this.VersionText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.VersionText.AutoSize = true;
             this.VersionText.Font = new System.Drawing.Font("Target Alt Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.VersionText.Location = new System.Drawing.Point(49, 559);
+            this.VersionText.Location = new System.Drawing.Point(49, 681);
             this.VersionText.Name = "VersionText";
             this.VersionText.Size = new System.Drawing.Size(60, 24);
             this.VersionText.TabIndex = 12;
@@ -139,7 +146,7 @@
             this.IP_Text.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.IP_Text.AutoSize = true;
             this.IP_Text.Font = new System.Drawing.Font("Target Alt Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IP_Text.Location = new System.Drawing.Point(49, 580);
+            this.IP_Text.Location = new System.Drawing.Point(49, 702);
             this.IP_Text.Name = "IP_Text";
             this.IP_Text.Size = new System.Drawing.Size(56, 24);
             this.IP_Text.TabIndex = 11;
@@ -151,7 +158,7 @@
             this.Redbox_Logo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Redbox_Logo.ImageLocation = resources.GetString("Redbox_Logo.ImageLocation");
             this.Redbox_Logo.InitialImage = global::Redbox_Mobile_Command_Center.Properties.Resources.Redbox_Logo;
-            this.Redbox_Logo.Location = new System.Drawing.Point(222, 0);
+            this.Redbox_Logo.Location = new System.Drawing.Point(497, 0);
             this.Redbox_Logo.Name = "Redbox_Logo";
             this.Redbox_Logo.Size = new System.Drawing.Size(356, 111);
             this.Redbox_Logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -163,7 +170,7 @@
             this.MCC_Title.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.MCC_Title.AutoSize = true;
             this.MCC_Title.Font = new System.Drawing.Font("Target Alt Regular", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MCC_Title.Location = new System.Drawing.Point(236, 114);
+            this.MCC_Title.Location = new System.Drawing.Point(511, 114);
             this.MCC_Title.Name = "MCC_Title";
             this.MCC_Title.Size = new System.Drawing.Size(329, 35);
             this.MCC_Title.TabIndex = 8;
@@ -175,7 +182,7 @@
             this.CreditText.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.CreditText.AutoSize = true;
             this.CreditText.Font = new System.Drawing.Font("Target Alt Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreditText.Location = new System.Drawing.Point(273, 574);
+            this.CreditText.Location = new System.Drawing.Point(548, 696);
             this.CreditText.Name = "CreditText";
             this.CreditText.Size = new System.Drawing.Size(255, 24);
             this.CreditText.TabIndex = 14;
@@ -185,6 +192,7 @@
             // GenericKioskPanel
             // 
             this.GenericKioskPanel.BackColor = System.Drawing.SystemColors.Window;
+            this.GenericKioskPanel.Controls.Add(this.MovementsBox);
             this.GenericKioskPanel.Controls.Add(this.GKPTitle);
             this.GenericKioskPanel.Controls.Add(this.GenericKioskPageBack_Btn);
             this.GenericKioskPanel.Controls.Add(this.label1);
@@ -193,9 +201,69 @@
             this.GenericKioskPanel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.GenericKioskPanel.Location = new System.Drawing.Point(0, 0);
             this.GenericKioskPanel.Name = "GenericKioskPanel";
-            this.GenericKioskPanel.Size = new System.Drawing.Size(800, 607);
+            this.GenericKioskPanel.Size = new System.Drawing.Size(1350, 729);
             this.GenericKioskPanel.TabIndex = 16;
             this.GenericKioskPanel.Visible = false;
+            // 
+            // MovementsBox
+            // 
+            this.MovementsBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.MovementsBox.Controls.Add(this.GoToButton);
+            this.MovementsBox.Controls.Add(this.SlotTitleText);
+            this.MovementsBox.Controls.Add(this.SlotEntry);
+            this.MovementsBox.Controls.Add(this.DeckTextTitle);
+            this.MovementsBox.Controls.Add(this.DeckEntry);
+            this.MovementsBox.Font = new System.Drawing.Font("Target Alt Regular", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MovementsBox.Location = new System.Drawing.Point(1195, 9);
+            this.MovementsBox.Name = "MovementsBox";
+            this.MovementsBox.Size = new System.Drawing.Size(143, 293);
+            this.MovementsBox.TabIndex = 18;
+            this.MovementsBox.TabStop = false;
+            this.MovementsBox.Text = "Movements";
+            // 
+            // GoToButton
+            // 
+            this.GoToButton.Location = new System.Drawing.Point(10, 100);
+            this.GoToButton.Name = "GoToButton";
+            this.GoToButton.Size = new System.Drawing.Size(124, 40);
+            this.GoToButton.TabIndex = 4;
+            this.GoToButton.Text = "Go To";
+            this.GoToButton.UseVisualStyleBackColor = true;
+            this.GoToButton.Click += new System.EventHandler(this.GoToButton_Click);
+            // 
+            // SlotTitleText
+            // 
+            this.SlotTitleText.AutoSize = true;
+            this.SlotTitleText.Font = new System.Drawing.Font("Target Alt Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SlotTitleText.Location = new System.Drawing.Point(71, 35);
+            this.SlotTitleText.Name = "SlotTitleText";
+            this.SlotTitleText.Size = new System.Drawing.Size(36, 20);
+            this.SlotTitleText.TabIndex = 3;
+            this.SlotTitleText.Text = "Slot";
+            // 
+            // SlotEntry
+            // 
+            this.SlotEntry.Location = new System.Drawing.Point(75, 58);
+            this.SlotEntry.Name = "SlotEntry";
+            this.SlotEntry.Size = new System.Drawing.Size(59, 36);
+            this.SlotEntry.TabIndex = 2;
+            // 
+            // DeckTextTitle
+            // 
+            this.DeckTextTitle.AutoSize = true;
+            this.DeckTextTitle.Font = new System.Drawing.Font("Target Alt Regular", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DeckTextTitle.Location = new System.Drawing.Point(6, 35);
+            this.DeckTextTitle.Name = "DeckTextTitle";
+            this.DeckTextTitle.Size = new System.Drawing.Size(43, 20);
+            this.DeckTextTitle.TabIndex = 1;
+            this.DeckTextTitle.Text = "Deck";
+            // 
+            // DeckEntry
+            // 
+            this.DeckEntry.Location = new System.Drawing.Point(10, 58);
+            this.DeckEntry.Name = "DeckEntry";
+            this.DeckEntry.Size = new System.Drawing.Size(59, 36);
+            this.DeckEntry.TabIndex = 0;
             // 
             // GKPTitle
             // 
@@ -203,7 +271,7 @@
             this.GKPTitle.AutoSize = true;
             this.GKPTitle.Font = new System.Drawing.Font("Target Alt Regular", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GKPTitle.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.GKPTitle.Location = new System.Drawing.Point(292, 9);
+            this.GKPTitle.Location = new System.Drawing.Point(567, 9);
             this.GKPTitle.Name = "GKPTitle";
             this.GKPTitle.Size = new System.Drawing.Size(225, 39);
             this.GKPTitle.TabIndex = 17;
@@ -214,7 +282,7 @@
             // 
             this.GenericKioskPageBack_Btn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.GenericKioskPageBack_Btn.Font = new System.Drawing.Font("Target Alt Regular", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.GenericKioskPageBack_Btn.Location = new System.Drawing.Point(222, 468);
+            this.GenericKioskPageBack_Btn.Location = new System.Drawing.Point(497, 529);
             this.GenericKioskPageBack_Btn.Name = "GenericKioskPageBack_Btn";
             this.GenericKioskPageBack_Btn.Size = new System.Drawing.Size(343, 89);
             this.GenericKioskPageBack_Btn.TabIndex = 16;
@@ -228,7 +296,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Target Alt Regular", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(273, 574);
+            this.label1.Location = new System.Drawing.Point(548, 696);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 24);
             this.label1.TabIndex = 15;
@@ -239,7 +307,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 607);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.Controls.Add(this.GenericKioskPanel);
             this.Controls.Add(this.MainMenuPanel);
             this.MaximizeBox = false;
@@ -253,6 +321,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Redbox_Logo)).EndInit();
             this.GenericKioskPanel.ResumeLayout(false);
             this.GenericKioskPanel.PerformLayout();
+            this.MovementsBox.ResumeLayout(false);
+            this.MovementsBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -274,6 +344,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button GenericKioskPageBack_Btn;
         private System.Windows.Forms.Label GKPTitle;
+        private System.Windows.Forms.GroupBox MovementsBox;
+        private System.Windows.Forms.Label SlotTitleText;
+        private System.Windows.Forms.TextBox SlotEntry;
+        private System.Windows.Forms.Label DeckTextTitle;
+        private System.Windows.Forms.TextBox DeckEntry;
+        private System.Windows.Forms.Button GoToButton;
     }
 }
 

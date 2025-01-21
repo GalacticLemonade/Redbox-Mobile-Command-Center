@@ -95,7 +95,6 @@ namespace Redbox_Mobile_Command_Center {
                 activeKiosk = Int32.Parse(KioskID);
 
                 SwitchToKioskPanel(KioskID);
-                //await client.SendMessageAsync("execute-kiosk-command move-to-slot 52 8");
             }
         }
 
@@ -268,6 +267,13 @@ namespace Redbox_Mobile_Command_Center {
             MainMenuPanel.Visible = true;
 
             client.SendMessageAsync("select-no-kiosk");
+        }
+
+        private void GoToButton_Click(object sender, EventArgs e) {
+            int Deck = Int32.Parse(DeckEntry.Text);
+            int Slot = Int32.Parse(SlotEntry.Text);
+
+            client.SendMessageAsync("execute-kiosk-command move-to-slot " + Slot + " " + Deck + "");
         }
     }
 
